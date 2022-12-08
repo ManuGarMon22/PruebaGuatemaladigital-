@@ -10,7 +10,6 @@ const SearchBar = () => {
 
   function busqueda(e) {
     e.preventDefault();
-    console.log("si funciona el boton. Busca", search);
     dispatch(actions.busqueda(search));
   }
 

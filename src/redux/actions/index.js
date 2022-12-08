@@ -3,8 +3,6 @@ import axios from "axios";
 export const BUSCAR = "BUSCAR";
 
 const buscar = async (search) => {
-  console.log("entro al metodo buscar");
-
   const resultado = await axios
     .get(
       `https://guatemaladigital.com:85/api/Busqueda?CadenaBusqueda=${search}`

@@ -17,6 +17,7 @@ const Results = () => {
                   imagen={e.Foto}
                   descripcion={e.Descripcion}
                   precio={e.Precio}
+                  key={e.CodigoProducto}
                 />
               );
             })}
