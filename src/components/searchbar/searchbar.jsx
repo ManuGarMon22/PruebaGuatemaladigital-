@@ -1,45 +1,18 @@
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import * as actions from "../../redux/actions";
+
 const { useState } = require("react");
 const Results = require("../results/results");
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
-  const [result, setResult] = useState();
+  const dispatch = useDispatch();
 
-  const buscar = async () => {
-    const resultado = await axios
-      .get(
-        `https://guatemaladigital.com:85/api/Busqueda?CadenaBusqueda=${search}`
-      )
-      .then((json) => json.data)
-      .then((f) => {
-        console.log(f.Response.Cadena);
-        return f.Response.Cadena;
-      })
-      .catch((error) => alert("Error al traer los productos"));
-    console.log("traduccion", resultado);
-    return resultado;
-  };
-
-  const busqueda = async (e) => {
+  function busqueda(e) {
     e.preventDefault();
-
-    const resultados = await axios
-      .get(
-        `https://guatemaladigital.com:85/api/Busqueda?CadenaBusqueda=${search}&NumeroPagina=1&Traduccion=${buscar()}`
-      )
-      .then((json) => json.data)
-      .then((f) => {
-        console.log(
-          `https://guatemaladigital.com:85/api/Busqueda?CadenaBusqueda=${search}&NumeroPagina=1&Traduccion=${buscar()}`
-        );
-        return f.Response[0].Articulos;
-      })
-      .catch((error) => alert("Error al traer los productos"));
-    console.log("resultados ", resultados);
-    setResult(resultados);
-    return resultados;
-  };
+    console.log("si funciona el boton. Busca", search);
+    dispatch(actions.busqueda(search));
+  }
 
   function searchHandler(e) {
     setSearch(e.target.value);
@@ -54,14 +27,6 @@ const SearchBar = () => {
         onChange={searchHandler}
       />
       <button onClick={busqueda}>Buscar</button>
-
-      {result ? (
-        <div>
-          <Results articulos={result} />
-        </div>
-      ) : (
-        <div>Esperando...</div>
-      )}
     </div>
   );
 };

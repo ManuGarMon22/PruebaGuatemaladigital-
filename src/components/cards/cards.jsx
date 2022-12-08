@@ -1,11 +1,10 @@
-const Cards = (imagen, nombre, descripcion, precio) => {
+const Cards = ({ imagen, descripcion, precio }) => {
   return (
     <div>
       <img src={imagen} alt="imagen" />
-
       <div>
-        <span> Descripcion: {descripcion}</span>
-        <span> Precio: ${precio}</span>
+        <span> Description: {descripcion}</span>
+        <span> Price: ${precio}</span>
       </div>
     </div>
   );
