@@ -3,8 +3,13 @@ const Cards = ({ imagen, descripcion, precio }) => {
     <div>
       <img src={imagen} alt="imagen" />
       <div>
-        <span> Description: {descripcion}</span>
-        <span> Price: ${precio}</span>
+        <span>
+          <strong>Description:</strong> {descripcion}
+        </span>
+        <br />
+        <span>
+          <strong>Price:</strong> ${precio}
+        </span>
       </div>
     </div>
   );
